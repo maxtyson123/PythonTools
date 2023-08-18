@@ -6,9 +6,9 @@ import socket
 import selectors
 import requests
 
-from Maxs_Modules.files import UserData
-from Maxs_Modules.debug import debug_message, error
-from Maxs_Modules.renderer import render_text
+from PythonTools.files import UserData
+from PythonTools.debug import debug_message, error
+from PythonTools.renderer import render_text
 
 
 # - - - - - - - Classes - - - - - - - -#

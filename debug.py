@@ -28,8 +28,8 @@ def init_debug() -> None:
     global QUIZ_DEBUGGER
 
     # Import here to prevent circular imports
-    from Maxs_Modules.tools import try_convert, set_if_none
-    from Maxs_Modules.files import SaveFile
+    from PythonTools.tools import try_convert, set_if_none
+    from PythonTools.files import SaveFile
 
     # Create the debugger
     class Debug(SaveFile):
@@ -96,7 +96,7 @@ def init_debug() -> None:
             """
 
             # Import colour
-            from Maxs_Modules.renderer import Colour
+            from PythonTools.renderer import Colour
 
             # Check if the log type is ignored
             if log_type in self.log_ignore:
@@ -116,7 +116,7 @@ def init_debug() -> None:
             Handles the database command. This will be updated in the future when the local database is implemented
             @param args: A tuple of arguments to be passed to the handler, to get a list of viable arguments use -h
             """
-            from Maxs_Modules.renderer import render_text
+            from PythonTools.renderer import render_text
 
             # If there is no arguments, add the help argument as the default
             if len(args) == 0:
@@ -139,8 +139,8 @@ def init_debug() -> None:
             Handles the server command. Currently only supports -h, -ip.
             @param args: A tuple of arguments to be passed to the handler, to get a list of viable arguments use -h
             """
-            from Maxs_Modules.network import get_ip
-            from Maxs_Modules.renderer import render_text
+            from PythonTools.network import get_ip
+            from PythonTools.renderer import render_text
 
             # If there is no arguments, add the help argument as the default
             if len(args) == 0:
@@ -167,7 +167,7 @@ def init_debug() -> None:
             Prints all the commands, if a command is given as an arg it will run the command with the -h arg
             @param args: The commands to run
             """
-            from Maxs_Modules.renderer import render_text
+            from PythonTools.renderer import render_text
 
             # Default behaviour for no args
             if len(args) == 0:
@@ -192,8 +192,8 @@ def init_debug() -> None:
             """
 
             # Import the modules
-            from Maxs_Modules.tools import get_user_input_of_type, string_bool
-            from Maxs_Modules.renderer import menu_manager, render_text
+            from PythonTools.tools import get_user_input_of_type, string_bool
+            from PythonTools.renderer import menu_manager, render_text
 
             # Default behaviour for no args
             if len(args) == 0:
@@ -281,7 +281,7 @@ def init_debug() -> None:
             Allows the user to view/clear the errors (note: errors made by the error() function, not the runtime errors)
             @param args: The args to pass to the command, if none are given it will show the help message
             """
-            from Maxs_Modules.renderer import render_text
+            from PythonTools.renderer import render_text
 
             # Default behaviour for no args
             if len(args) == 0:
@@ -422,7 +422,7 @@ def error(error_message: str) -> None:
     @param error_message: The error message to print
     """
     # Print the coloured error message
-    from Maxs_Modules.renderer import render_text
+    from PythonTools.renderer import render_text
     render_text("ERROR: " + error_message)
 
     # Add the error to the error log if debug is enabled

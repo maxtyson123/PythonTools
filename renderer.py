@@ -6,9 +6,9 @@ import sys
 import time
 import eel
 
-from Maxs_Modules.debug import debug_message, in_ide
-from Maxs_Modules.files import UserData
-from Maxs_Modules.tools import get_user_input_of_type
+from PythonTools.debug import debug_message, in_ide
+from PythonTools.files import UserData
+from PythonTools.tools import get_user_input_of_type
 
 # - - - - - - - Variables - - - - - - -#
 # DONT CHANGE
@@ -701,7 +701,7 @@ def init_gui() -> None:
     If the display type is GUI then start the web server on a free port (starting at 8080)
     """
     # Import here to prevent circular imports
-    from Maxs_Modules.network import get_free_port, get_ip
+    from PythonTools.network import get_free_port, get_ip
 
     # If the display type is GUI then start the web server
     if DISPLAY_TYPE == "GUI":

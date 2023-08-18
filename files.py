@@ -2,8 +2,9 @@
 import base64
 import json
 import os
-from Maxs_Modules.debug import debug_message, error
-from Maxs_Modules.tools import try_convert, set_if_none
+# TODO: Will need to change this to import better
+from PythonTools.debug import debug_message, error
+from PythonTools.tools import try_convert, set_if_none
 
 # - - - - - - - Variables - - - - - - -#
 

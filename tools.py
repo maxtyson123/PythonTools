@@ -2,7 +2,7 @@
 import time
 from inputimeout import inputimeout, TimeoutOccurred
 
-from Maxs_Modules.debug import error, debug_cli, in_ide
+from PythonTools.debug import error, debug_cli, in_ide
 
 
 # - - - - - - - Functions - - - - - - -#
@@ -98,7 +98,7 @@ def get_user_input_of_type(type_to_convert: object, input_message: str = "", mus
     @return: The user input converted to the type specified
     """
 
-    from Maxs_Modules.renderer import DISPLAY_TYPE, get_gui_timed_input, get_input
+    from PythonTools.renderer import DISPLAY_TYPE, get_gui_timed_input, get_input
 
     # Store the start time
     start_time = time.time()
