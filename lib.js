@@ -1,3 +1,5 @@
+const original_title = document.title
+
 
 const colour_codes = {
    "BLACK":"[30m",
@@ -27,7 +29,7 @@ let is_inputting = false
 const input_prompt = document.getElementById("input_prompt");
 const input_box = document.getElementById("input");
 const output_div = document.getElementById("output")
-const input_container = document.getElementsByClassName("quiz-input-container")[0]
+const input_container = document.getElementsByClassName("input-container")[0]
 function translate_colours(text){
     // Loop through the colour codes
     for (const [key, value] of Object.entries(colour_codes)) {
@@ -137,7 +139,7 @@ eel.expose(close_window)
 
 function set_title(title){
     // Called by python to set the title of the menu
-    document.title = "Quiz Game UI | " + title
+    document.title = original_title +  " | " + title
 }
 eel.expose(set_title)
 
