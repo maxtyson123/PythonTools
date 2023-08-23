@@ -696,7 +696,7 @@ def close_python() -> None:
     os.kill(pid, signal.SIGTERM)
 
 
-def init_gui() -> None:
+def init_gui(web_ip="Auto", web_port=8080) -> None:
     """
     If the display type is GUI then start the web server on a free port (starting at 8080)
     """
@@ -705,8 +705,11 @@ def init_gui() -> None:
 
     # If the display type is GUI then start the web server
     if DISPLAY_TYPE == "GUI":
-        web_ip = get_ip()
-        web_port = get_free_port(web_ip, 8080)
+
+        if web_ip == "Auto":
+            web_ip = get_ip()
+
+        web_port = get_free_port(web_ip, web_port)
         print(web_port)
 
         eel.init("web")
