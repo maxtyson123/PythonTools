@@ -12,7 +12,7 @@ from PythonTools.tools import get_user_input_of_type
 
 # - - - - - - - Variables - - - - - - -#
 # DONT CHANGE
-DISPLAY_TYPE = UserData().display_mode
+DISPLAY_TYPE = "CLI"
 
 # CHANGE IN IDLE
 COMPACT_CONSOLE = False
