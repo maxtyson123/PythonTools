@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import io
 from datetime import datetime
 
 # - - - - - - - Variables - - - - - - -#
@@ -460,6 +461,66 @@ def handle_arg(arg: str, get_value: bool = False) -> str or None:
 
     return None
 
+
+def capture_and_assert(func, expected_output, print_onsuccess=False):
+    """
+    Captures print output from func() and compares it with expected output.
+
+    (Note this is a wrapper for capture_and_assert_file)
+
+    @param func: The function to execute and capture output from.
+    @param expected_output: The expected output.
+    """
+
+    # Create a temporary file to store the expected output
+    with open("temp_expected_output.txt", "w", encoding="utf-8") as file:
+        file.write(expected_output)
+
+    # Call the capture_and_assert_file function
+    capture_and_assert_file(func, "temp_expected_output.txt", print_onsuccess)
+
+    # Delete the temporary file
+    os.remove("temp_expected_output.txt")
+
+def capture_and_assert_file(func, expected_file, print_onsuccess=False):
+    """
+    Captures print output from func() and compares it with expected output from a file.
+
+    @param func: The function to execute and capture output from.
+    @param expected_file: Path to the file containing the expected output.
+    """
+
+
+    # TODO: Capture the output from the render_text function as well
+
+    # Prevent circular imports
+    from PythonTools.renderer import render_text
+
+    # Redirect stdout
+    captured_output = io.StringIO()
+    sys.stdout = captured_output
+
+    try:
+        func()  # Run the function
+    finally:
+        sys.stdout = sys.__stdout__  # Restore original stdout
+
+    # Get the actual output
+    actual_output = captured_output.getvalue().strip()
+
+    # Read expected output from file
+    with open(expected_file, 'r', encoding='utf-8') as file:
+        expected_output = file.read().strip()
+
+    # Assert the captured output matches expected output
+    assert actual_output == expected_output, f"Output mismatch!\nExpected:\n{expected_output}\nGot:\n{actual_output}"
+
+    # Print success message if required
+    if print_onsuccess:
+        render_text("Test passed successfully!")
+
+
+# - - - - - - - SETUP - - - - - - -#
 
 in_ide = (handle_arg("--ide") == "--ide")
 use_debug = (handle_arg("--debug") == "--debug")
