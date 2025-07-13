@@ -9,6 +9,7 @@ from datetime import datetime
 
 QUIZ_DEBUGGER = None
 START_TIME = time.time()
+PRINT_ON_SUCCESS = True
 
 session_message_log = []
 session_error_log = []
@@ -462,7 +463,7 @@ def handle_arg(arg: str, get_value: bool = False) -> str or None:
     return None
 
 
-def capture_and_assert(func, expected_output, print_onsuccess=False):
+def capture_and_assert(func, expected_output, print_onsuccess=PRINT_ON_SUCCESS):
     """
     Captures print output from func() and compares it with expected output.
 
@@ -482,7 +483,7 @@ def capture_and_assert(func, expected_output, print_onsuccess=False):
     # Delete the temporary file
     os.remove("temp_expected_output.txt")
 
-def capture_and_assert_file(func, expected_file, print_onsuccess=False):
+def capture_and_assert_file(func, expected_file, print_onsuccess=PRINT_ON_SUCCESS):
     """
     Captures print output from func() and compares it with expected output from a file.
 
